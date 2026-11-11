@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alla Kassianova</title>
+<meta name="description" content="Alla Kassianova: research, translation and project administration across Russian and English.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Palette: warm paper, ink text, one deep blue accent. Layout: single reading column, labels in the margin on wide screens. */
+  --bg: #f9f7f2;
+  --surface: #fffdf9;
+  --ink: #1f2026;
+  --muted: #646059;
+  --line: #e0dbd1;
+  --accent: #1f4b7a;
+  --accent-soft: #e6ebf2;
+  --display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --measure: 66ch;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161a20;
+    --surface: #1d222a;
+    --ink: #e7eaee;
+    --muted: #a3acb8;
+    --line: #333a45;
+    --accent: #8fb6e0;
+    --accent-soft: #24344a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161a20;
+  --surface: #1d222a;
+  --ink: #e7eaee;
+  --muted: #a3acb8;
+  --line: #333a45;
+  --accent: #8fb6e0;
+  --accent-soft: #24344a;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1.15; text-wrap: balance; margin: 0; }
+p { margin: 0; max-width: var(--measure); }
+ul { margin: 0; padding: 0; list-style: none; }
+
+.page { max-width: 1040px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* Header */
+.masthead {
+  padding: 56px 0 36px;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 18px;
+}
+.masthead h1 { font-size: clamp(34px, 5vw, 48px); letter-spacing: -0.01em; }
+.masthead .lede { font-family: var(--display); font-size: clamp(20px, 2.6vw, 26px); font-weight: 400; color: var(--ink); max-width: 44ch; }
+.masthead .langs { color: var(--muted); font-size: 15px; }
+nav.toc { font-size: 15px; margin-top: 6px; }
+nav.toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+nav.toc a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px 26px; align-items: flex-start; }
+.toc-list > li { display: grid; gap: 6px; }
+.toc-sub { display: grid; gap: 4px; padding-left: 14px; border-left: 2px solid var(--line); font-size: 14px; }
+.toc-sub a { color: var(--muted); border-bottom-color: transparent; }
+.toc-sub a:hover { color: var(--accent); }
+@media (max-width: 720px) { .toc-list { gap: 10px 20px; } }
+
+/* Sections: label in the margin on wide screens */
+section.block {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 12px 48px;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--line);
+}
+section.block > h2 {
+  font-size: 15px;
+  font-family: var(--body);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 6px;
+}
+.content { display: grid; gap: 22px; min-width: 0; }
+.content h3 { font-size: 26px; }
+.content .lead { font-size: 18px; }
+
+/* Skills grid */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.skill {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 20px 22px 18px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.skill h3 { font-size: 22px; }
+.skill ul { display: grid; gap: 6px; }
+.skill li { padding-left: 14px; position: relative; }
+.skill li::before { content: ""; position: absolute; left: 0; top: 11px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.skill .shown { font-size: 15px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px; }
+.skill .shown a { color: var(--accent); }
+@media (max-width: 720px) { .skills { grid-template-columns: 1fr; } }
+
+section.area > h2 span { display: block; font-size: 12px; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 2px; }
+section.area { padding-top: 34px; padding-bottom: 34px; }
+
+/* Capability sections */
+.cap-head { display: grid; gap: 8px; }
+.cap-head .kicker { color: var(--ink); font-size: 17px; max-width: var(--measure); }
+.cap-head .kicker b { font-weight: 600; }
+.evidence-label { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.evidence { display: grid; gap: 14px; margin-top: 4px; }
+.evidence li {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr);
+  gap: 12px;
+  max-width: calc(var(--measure) + 26px);
+}
+.evidence li::before {
+  content: "";
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  margin-top: 11px;
+}
+.evidence b { font-weight: 600; }
+.evidence .result { color: var(--muted); }
+.cred { font-size: 15px; color: var(--muted); border-left: 2px solid var(--accent); padding-left: 12px; max-width: var(--measure); }
+
+/* Examples */
+.ex { display: grid; gap: 10px; padding: 18px 0 20px; border-top: 1px solid var(--line); }
+.ex:last-child { padding-bottom: 0; }
+.ex h4 { font-family: var(--display); font-weight: 500; font-size: 23px; line-height: 1.2; margin: 0; }
+.ex p { max-width: var(--measure); }
+.ex .lab { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-right: 10px; vertical-align: 1px; }
+
+/* Back links */
+.backrow { display: flex; gap: 18px; font-size: 14px; margin-top: 6px; max-width: none; }
+.backrow a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+.backrow a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Work list */
+.filters { display: grid; gap: 10px; }
+.filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.filter-row .flabel { font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); width: 56px; }
+.chip {
+  font: 500 14px/1 var(--body);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 13px;
+  cursor: pointer;
+}
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+:root[data-theme="dark"] .chip[aria-pressed="true"] { color: #10151c; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .chip[aria-pressed="true"] { color: #10151c; } }
+.count { color: var(--muted); font-size: 15px; }
+.worklist { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.work {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 4px 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.work .year { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 15px; padding-top: 3px; }
+.work .title { font-family: var(--display); font-size: 20px; line-height: 1.3; max-width: var(--measure); }
+.work .venue { color: var(--muted); font-size: 15px; max-width: var(--measure); }
+.work .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tag { font-size: 12.5px; color: var(--accent); background: var(--accent-soft); border-radius: 4px; padding: 3px 7px; }
+.work[hidden] { display: none; }
+.empty { color: var(--muted); padding: 18px 0; }
+
+/* History */
+.hist { display: grid; gap: 0; border-top: 1px solid var(--line); max-width: calc(var(--measure) + 120px); }
+.hist li { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 4px 18px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.hist .when { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 15px; padding-top: 2px; white-space: nowrap; }
+.hist b { font-weight: 600; }
+@media (max-width: 720px) { .hist li { grid-template-columns: 1fr; gap: 2px; } }
+
+/* Facts and contact */
+.facts { display: grid; gap: 10px; max-width: var(--measure); }
+.facts div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; }
+.facts dt { color: var(--muted); font-size: 15px; padding-top: 2px; }
+.facts dd { margin: 0; }
+.links { display: grid; gap: 8px; }
+
+footer { padding-top: 28px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 720px) {
+  section.block { grid-template-columns: 1fr; gap: 10px; padding: 34px 0; }
+  .masthead { padding: 40px 0 28px; }
+  .work { grid-template-columns: 1fr; gap: 2px; }
+  .facts div { grid-template-columns: 1fr; gap: 2px; }
+  .filter-row .flabel { width: auto; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .chip { transition: background-color 120ms, border-color 120ms; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ===== HEADER: name, headline, subtitle, menu ===== -->
+<header class="masthead" id="top">
+  <h1>Alla Kassianova</h1>
+  <p class="lede">I research a question down to its primary sources, organize what I find so the reader can act on it, and see projects through</p>
+  <p class="langs">Research and analysis · Translation and editing, Russian and English · Project administration<br>Available for remote or hybrid work from California</p>
+  <nav class="toc" aria-label="Sections">
+    <ul class="toc-list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a>
+        <ul class="toc-sub">
+          <li><a href="#research">Research and analysis</a></li>
+          <li><a href="#content">Curation and writing</a></li>
+          <li><a href="#translation">Translation and editing</a></li>
+          <li><a href="#administration">Project administration</a></li>
+        </ul>
+      </li>
+      <li><a href="#examples">Results</a></li>
+      <li><a href="#work">Publications</a></li>
+      <li><a href="#history">Projects and roles</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ===== ABOUT ===== -->
+<section class="block" id="about">
+  <h2>About</h2>
+  <div class="content">
+    <p class="lead">I am a researcher, translator and program administrator working in Russian and English. For eleven years I was a Senior Project Associate at Stanford University's Center for International Security and Cooperation (CISAC), where I ran U.S.–Russian research and exchange projects and coordinated a two-volume history of nuclear cooperation between the two countries from first drafts to publication.</p>
+    <p>Before that I was a university lecturer and published researcher on Russian security and defense policy, a media analyst for corporate clients, and a program director for business delegations visiting Silicon Valley. In each role I have relied on the same set of skills: build the research from primary sources, present the trends and conclusions in a form that informs decisions and action, and see every project through with attention to detail and an eye on what comes next.</p>
+    <p>I am looking for research, analysis and proposal-support roles; translation and editing work; and program or project administration.</p>
+    <p class="backrow"><a href="#" class="back" data-back>← Back</a><a href="#top" class="top">↑ Top</a></p>
+  </div>
+</section>
+
+<!-- ===== SKILLS (four panels) ===== -->
+<section class="block" id="skills">
+  <h2>Skills</h2>
+  <div class="content">
+        <div class="skills">
+      <div class="skill">
+        <h3>Research and analysis</h3>
+        <ul>
+          <li>Open-source research in Russian, English and German</li>
+          <li>Source evaluation and fact-checking against primary records</li>
+          <li>Reading large volumes of material and reducing them to structured findings</li>
+          <li>Analytical writing for two audiences: scholars (articles, chapters) and decision-makers (memos, briefs)</li>
+          <li>Media monitoring and analysis against client requirements</li>
+          <li>Editing research papers and reports for accuracy, consistency and clarity</li>
+        </ul>
+        <p class="shown">Shown in: <a href="#research">publications</a>, <a href="#ex-forum">the Forum papers</a></p>
+      </div>
+      <div class="skill">
+        <h3>Curation and writing</h3>
+        <ul>
+          <li>Archival research and content curation: locating, selecting and describing documents and photographs</li>
+          <li>Conducting, transcribing and editing interviews, including from Russian into English</li>
+          <li>Copywriting: introductions, descriptions, biographies, connecting narrative</li>
+          <li>Organizing a collection by time, topic and people so readers can find their way</li>
+          <li>Working with a developer to build a content site, then running it (Drupal 8 and 9)</li>
+          <li>Keeping a collection current over years</li>
+        </ul>
+        <p class="shown">Shown in: <a href="#ex-l2l">Lab-to-Lab</a></p>
+      </div>
+      <div class="skill">
+        <h3>Translation and editing</h3>
+        <ul>
+          <li>Written translation, Russian to English and English to Russian</li>
+          <li>Technical and scientific, government and policy, educational and business material</li>
+          <li>Bilingual editing and proofreading, with consistent terminology across many authors</li>
+          <li>Coordinating translation across a large project</li>
+          <li>Consecutive interpretation in formal and informal settings</li>
+          <li>Bilingual document preparation and formatting</li>
+        </ul>
+        <p class="shown">Shown in: <a href="#ex-book">Doomed to Cooperate</a>, <a href="#ex-dialogue">expert dialogue</a></p>
+      </div>
+      <div class="skill">
+        <h3>Project administration</h3>
+        <ul>
+          <li>Coordinating multi-year programs with partners in several institutions and countries</li>
+          <li>Grant administration and reporting, including funders' online systems</li>
+          <li>Partner, participant and stakeholder relations, in two languages</li>
+          <li>Event logistics: agendas, visas, travel, venues, site visits, remote sessions with interpretation</li>
+          <li>Records, documentation and compliance across concurrent projects</li>
+          <li>Scheduling and communication across time zones</li>
+        </ul>
+        <p class="shown">Shown in: <a href="#ex-book">the book project</a>, <a href="#ex-forum">the Forum</a>, <a href="#administration">other programs</a></p>
+      </div>
+    </div>
+    <p class="backrow"><a href="#" class="back" data-back>← Back</a><a href="#top" class="top">↑ Top</a></p>
+  </div>
+</section>
+
+<!-- ===== AREA: RESEARCH AND ANALYSIS ===== -->
+<section class="block area" id="research">
+  <h2><span>Skills</span>Research</h2>
+  <div class="content">
+    <div class="cap-head">
+      <h3>Research and analysis</h3>
+      <p class="kicker"><b>Skills:</b> open-source research, source verification, synthesis, analytical writing for scholars and for decision-makers.</p>
+    </div>
+    <p>My field is Russian foreign and security policy: how the state defines itself in policy discourse, arms exports and the defense industry, missile defense, and U.S.–Russian nuclear and scientific cooperation. I have written for scholars, in peer-reviewed articles and book chapters, and for policy readers, in short memos for PONARS Eurasia and CSIS, a network and a think tank that put Russia analysis in front of Washington policy audiences.</p>
+    <ul class="evidence">
+      <li><div><b>“Russia: still open to the West?”</b>, <i>Europe-Asia Studies</i>, 2001. Still used in the field, with more than 160 citations.</div></li>
+      <li><div><b>Policy memos</b> for PONARS and CSIS, 2002–2016, on Russian arms sales to Iran, the arms-export agency Rosoboronexport, missile defense cooperation, and lab-to-lab relations.</div></li>
+      <li><div><b>Chapters</b> in <i>Doomed to Cooperate</i> (2016), five pieces co-authored with Siegfried Hecker: the Volume 2 opening essay on the interpersonal side of lab-to-lab cooperation; the account of nuclear security cooperation between the Russian military and the U.S. Department of Energy laboratories (with Niko Milonopoulos); and three interviews with Academician Nikolai Ponomarev-Stepnoy on nuclear materials security. <a href="https://nonproliferation.org/lab-to-lab-contents/">Contents</a></div></li>
+      <li><div><b>Framing essays</b> for the two <i>Bulletin of the Atomic Scientists</i> series, 2019 and 2020 (see <a href="#ex-forum">the Forum</a>).</div></li>
+      <li><div><b>Media analysis</b> for corporate clients, 2007–2011: large volumes of coverage read against client requirements and turned into structured reports.</div></li>
+    </ul>
+    <p class="backrow"><a href="#" class="back" data-back>← Back</a><a href="#top" class="top">↑ Top</a></p>
+  </div>
+</section>
+<!-- ===== AREA: CURATION AND WRITING ===== -->
+<section class="block area" id="content">
+  <h2><span>Skills</span>Curation and writing</h2>
+  <div class="content">
+    <div class="cap-head">
+      <h3>Curation and writing: archival research, interviews, copywriting, publishing</h3>
+      <p class="kicker"><b>Skills:</b> archival research, content curation, interviews, copywriting, content organization, site management, updating.</p>
+    </div>
+    <p>Building a documentary collection and keeping it alive: finding and selecting material, describing it accurately, writing the text that connects it, organizing it so readers can find their way, and updating it as new material arrives. Twelve years of this went into one site, <a href="#ex-l2l">Lab-to-Lab</a> (see Results).</p>
+    <p class="backrow"><a href="#" class="back" data-back>← Back</a><a href="#top" class="top">↑ Top</a></p>
+  </div>
+</section>
+<!-- ===== AREA: TRANSLATION AND EDITING ===== -->
+<section class="block area" id="translation">
+  <h2><span>Skills</span>Translation</h2>
+  <div class="content">
+    <div class="cap-head">
+      <h3>Translation and editing, Russian and English</h3>
+      <p class="kicker"><b>Skills:</b> written translation in both directions, bilingual editing and proofreading, translation coordination, consecutive interpretation.</p>
+    </div>
+    <p>Subject areas: technical and scientific material (nuclear security and safety), government, defense and policy, educational and training materials, business and technology, and program documentation from short instructions to book-length manuscripts.</p>
+    <ul class="evidence">
+      <li><div><b><i>Doomed to Cooperate</i></b>: translated many of the 117 contributions, coordinated all translation for the book, and edited and proofread every translation (see <a href="#ex-book">Results</a>). Reviewed the full Russian translation of Volume 1, published in Russia in 2018 (<a href="https://elib.biblioatom.ru/text/obrechennye-na-sotrudnichestvo_t1_2018/p0/">Russian edition</a>).</div></li>
+      <li><div><b>Expert dialogue materials</b>, 2013–2024: working documents and records on government, defense and policy subjects (see <a href="#ex-dialogue">Results</a>).</div></li>
+      <li><div><b>Business and professional programs</b> between Eastern Europe and Silicon Valley, 2010–2013: program materials, correspondence and interpretation for visiting professional groups, conference participants and partners.</div></li>
+      <li><div><b>Consecutive interpretation</b> at formal and informal meetings requiring confidentiality and subject-matter knowledge.</div></li>
+    </ul>
+    <p class="cred">Officially assessed in 2024 at ILR 3+ in Russian and ILR 3 in English (Interagency Language Roundtable scale; level 3 is general professional proficiency). Native Russian speaker; twenty years of professional work in English in the United States.</p>
+    <p class="backrow"><a href="#" class="back" data-back>← Back</a><a href="#top" class="top">↑ Top</a></p>
+  </div>
+</section>
+<!-- ===== AREA: PROJECT ADMINISTRATION ===== -->
+<section class="block area" id="administration">
+  <h2><span>Skills</span>Administration</h2>
+  <div class="content">
+    <div class="cap-head">
+      <h3>Project administration</h3>
+      <p class="kicker"><b>Skills:</b> grant proposals and reporting, coordination of distributed teams and partners, keeping concurrent projects on track, event logistics, records and compliance.</p>
+    </div>
+    <p>Grant proposals and the reporting that follows them; liaison between teams, partners and participants spread across institutions, countries and time zones; several projects running at once and each kept on schedule; event logistics including visas and travel; records and compliance; and the follow-through that keeps a program moving between meetings.</p>
+    <ul class="evidence">
+      <li><div><b>Stanford University, Center for International Security and Cooperation</b>, 2013–2024: eleven years of concurrent U.S.–Russian projects, each with its own funders, partners, participants and calendar. Wrote and supported grant proposals and reports to Carnegie Corporation, the MacArthur Foundation and others; served as the working liaison between the Stanford team and counterparts in Russia; and kept the book, the website, the exchange program and the expert meetings moving at the same time. Details of these projects are in <a href="#examples">Results</a>.</div></li>
+      <li><div><b>Monterey Summer Symposium on Russia</b>, Middlebury Institute of International Studies, 2023: a three-week graduate program in Armenia and Georgia. Took over operations one month before the start; the program ran on schedule, and a faculty participant noted “exceptional efficiency and thoughtfulness.”</div></li>
+      <li><div><b>Silicon Valley Open Door</b>, 2011: co-directed a technology and investment conference with a team of twenty-plus volunteers.</div></li>
+      <li><div><b>Training program</b> for sixty faculty and staff of St. Petersburg University at Stanford, 2006–2007.</div></li>
+      <li><div><b>Business programs</b> for professional groups from Eastern Europe visiting Silicon Valley, 2011–2013, as program director.</div></li>
+    </ul>
+    <p class="cred">Tools: Google Workspace, Microsoft Office, Zoom, Slack, Asana, Drupal, Oracle Financials, and the online grant systems of major funders.</p>
+    <p class="backrow"><a href="#" class="back" data-back>← Back</a><a href="#top" class="top">↑ Top</a></p>
+  </div>
+</section>
+
+<!-- ===== RESULTS (four examples) ===== -->
+<section class="block" id="examples">
+  <h2>Results</h2>
+  <div class="content">
+    <div class="cap-head">
+      <h3>Four examples: task, role, result</h3>
+    </div>
+
+    <article class="ex" id="ex-book">
+      <h4><i>Doomed to Cooperate</i>, 2012–2016</h4>
+      <p><span class="lab">Task</span>A two-volume history of the cooperation between the U.S. and Russian nuclear weapons laboratories after 1991, written by the people who took part on both sides, in two languages, with Siegfried Hecker as editor and a small Stanford team.</p>
+      <p><span class="lab">My part</span>Project coordinator for four years. I kept the work moving between the Stanford team, <a href="https://nonproliferation.org/lab-to-lab-authors">117 contributing authors</a> in the United States and Russia, the translators, and the publisher's editorial team at Los Alamos: author communications, tracking every paper through its revisions, collecting photographs and documents, and running regular project sessions by video with remote interpretation. I also ran the translation itself: translated many of the contributions, coordinated all translation work, and edited and proofread every translation through multiple revisions for consistent terminology. I co-authored five of the pieces with Siegfried Hecker, including the essay that opens Volume 2. When Volume 1 was published in Russia, I reviewed the full translation.</p>
+      <p><span class="lab">Result</span>Published in 2016 by <a href="https://lahistorymuseumshop.square.site/product/doomed-to-cooperate/36?cp=true&amp;sa=false&amp;sbp=false&amp;q=false&amp;category_id=7M3YJ5G7JCS7FX7VWNLFQWLH">Bathtub Row Press</a>: two volumes, 976 pages. Reviewed in <i>Science</i>, <i>Physics Today</i>, <i>Survival</i>, <i>The Nonproliferation Review</i> and <i>Arms Control Today</i>, which called it the standard reference on the subject; covered by Forbes and Stanford News; presented at CSIS and discussed on BBC World Service. Volume 1 appeared in Russian in 2018, published by the Russian Federal Nuclear Center VNIITF in Snezhinsk (<a href="https://elib.biblioatom.ru/text/obrechennye-na-sotrudnichestvo_t1_2018/p0/"><i>Обреченные на сотрудничество</i></a>, 640 pages). <a href="https://nonproliferation.org/lab-to-lab-outreach-press-reviews/">Reviews and coverage</a></p>
+    </article>
+
+    <article class="ex" id="ex-l2l">
+      <h4>Lab-to-Lab, 2012–2024</h4>
+      <p><span class="lab">Task</span>Give the same history a home online that a printed book could not: the documents, photographs, interviews and personal accounts, from both Russian and American participants.</p>
+      <p><span class="lab">My part</span>All of the content and the site itself. I located, selected and described 86 archival documents (agreements, conference records, memoranda, press); assembled and identified some 350 photographs; conducted, transcribed and edited interviews and reminiscences, many of them from Russian; wrote the introductions, descriptions and biographies; organized the material by timeline, topic and people; worked with a developer to build the site in Drupal; and kept extending it for years after the book.</p>
+      <p><span class="lab">Result</span>The only online collection of its kind. When the project ended, the James Martin Center for Nonproliferation Studies adopted it and hosts it today.</p>
+      <p><span class="lab">Site</span><a href="https://nonproliferation.org/lab-to-lab/">nonproliferation.org/lab-to-lab</a></p>
+    </article>
+
+    <article class="ex" id="ex-forum">
+      <h4>U.S.–Russia Young Professionals Nuclear Forum, 2016–2021</h4>
+      <p><span class="lab">Task</span>Keep the next generation of nuclear professionals in the two countries working together as official cooperation was cut back: students and early-career specialists in mixed teams, producing joint work.</p>
+      <p><span class="lab">My part</span>Ran the program through three funding cycles under Carnegie Corporation and MacArthur Foundation grants: onboarding, events, research collaborations, partner relations, and the funders' reporting. When travel stopped in 2020, I moved the program online and kept it on schedule.</p>
+      <p><span class="lab">Result</span>The teams' results were published by the <i>Bulletin of the Atomic Scientists</i> as two series of papers, in <a href="https://thebulletin.org/2019/06/the-future-of-global-nuclear-power-through-the-eyes-of-young-russian-and-american-professionals/">2019</a> and <a href="https://thebulletin.org/2020/08/three-major-nuclear-accidents-as-seen-by-young-american-and-russian-professionals/">2020</a>, with framing essays I co-authored with Siegfried Hecker.</p>
+    </article>
+
+    <article class="ex" id="ex-dialogue">
+      <h4>CISAC's U.S.–Russian expert meetings, 2013–2024</h4>
+      <p><span class="lab">Task</span>Keep unofficial expert channels between the two countries working, among them a dialogue of senior retired military officers, through a decade when the political climate turned against them.</p>
+      <p><span class="lab">My part</span>The Stanford side of the relationships with Russian counterparts, the translation of working materials on government, defense and policy subjects, the record of the sessions, and the running of regular video sessions with remote interpretation.</p>
+      <p><span class="lab">Result</span>The meetings continued through the decade. They are among the sources David Holloway credits in <i>Nuclear Weapons: An International History</i> (Yale University Press, 2026), whose acknowledgments note this work.</p>
+    </article>
+    <p class="backrow"><a href="#" class="back" data-back>← Back</a><a href="#top" class="top">↑ Top</a></p>
+  </div>
+</section>
+
+
+
+
+
+<!-- ===== PUBLICATIONS (the list itself is in the WORK data near the bottom of the file) ===== -->
+<section class="block" id="work">
+  <h2>Publications</h2>
+  <div class="content">
+    <div class="filters" id="filters">
+      <div class="filter-row" data-group="type">
+        <span class="flabel">Type</span>
+        <button class="chip" type="button" data-value="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-value="article" aria-pressed="false">Research articles</button>
+        <button class="chip" type="button" data-value="chapter" aria-pressed="false">Book chapters</button>
+        <button class="chip" type="button" data-value="memo" aria-pressed="false">Policy analysis</button>
+        <button class="chip" type="button" data-value="review" aria-pressed="false">Reviews</button>
+      </div>
+      <div class="filter-row" data-group="topic">
+        <span class="flabel">Topic</span>
+        <button class="chip" type="button" data-value="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-value="policy" aria-pressed="false">Foreign and security policy</button>
+        <button class="chip" type="button" data-value="industry" aria-pressed="false">Arms exports and defense industry</button>
+        <button class="chip" type="button" data-value="missile" aria-pressed="false">Missile defense</button>
+        <button class="chip" type="button" data-value="nuclear" aria-pressed="false">Nuclear and science cooperation</button>
+      </div>
+      <div class="count" id="count"></div>
+    </div>
+    <ul class="worklist" id="worklist"></ul>
+    <p class="empty" id="empty" hidden>Nothing matches this combination. Choose another filter.</p>
+    <p class="cred">Full publication record on <a href="https://scholar.google.com/citations?user=qTC6MjMAAAAJ">Google Scholar</a>, <a href="https://www.researchgate.net/profile/Alla-Kassianova">ResearchGate</a> and <a href="https://www.ponarseurasia.org/tag/tags-kassianova/">PONARS Eurasia</a>.</p>
+    <p class="backrow"><a href="#" class="back" data-back>← Back</a><a href="#top" class="top">↑ Top</a></p>
+  </div>
+</section>
+
+<!-- ===== PROJECTS AND ROLES ===== -->
+<section class="block" id="history">
+  <h2>Projects and roles</h2>
+  <div class="content">
+    <ul class="hist">
+      <li><span class="when">2013–2024</span><span><b>Senior Project Associate</b>, Center for International Security and Cooperation, Stanford University. <a href="#ex-book">Doomed to Cooperate</a> (2012–2016) · <a href="#ex-l2l">Lab-to-Lab</a> (2012–2024) · <a href="#ex-forum">Young Professionals Nuclear Forum</a> (2016–2021) · <a href="#ex-dialogue">U.S.–Russian expert meetings</a> (2013–2024).</span></li>
+      <li><span class="when">2023</span><span><b>Operations Director</b> (contract, alongside the Stanford role), Monterey Summer Symposium on Russia, Middlebury Institute of International Studies at Monterey. Three-week graduate program in Armenia and Georgia.</span></li>
+      <li><span class="when">2011–2013</span><span><b>Program Director</b>, Silicon Valley Innovation Center. Business programs for professional groups from Eastern Europe visiting Silicon Valley.</span></li>
+      <li><span class="when">2010–2011</span><span><b>Vice President, Operations</b>, American Business Association of Russian-Speaking Professionals (AmBAR). Co-directed the 2011 Silicon Valley Open Door conference.</span></li>
+      <li><span class="when">2007–2011</span><span><b>Media Analyst</b>, Cymfony. Media monitoring and analysis for corporate clients.</span></li>
+      <li><span class="when">2005–2007</span><span><b>Visiting scholar and program coordinator</b>, Stanford Humanities Center and Center for Russian, East European and Eurasian Studies. Training program for sixty faculty and staff of St. Petersburg University.</span></li>
+      <li><span class="when">1996–2005</span><span><b>Associate Professor and Program Director</b>, Department of International Relations, Tomsk State University. Teaching and research in international relations; most of the publications listed above date from these years.</span></li>
+    </ul>
+    <p class="backrow"><a href="#" class="back" data-back>← Back</a><a href="#top" class="top">↑ Top</a></p>
+  </div>
+</section>
+
+<!-- ===== BACKGROUND ===== -->
+<section class="block" id="background">
+  <h2>Background</h2>
+  <div class="content">
+    <dl class="facts">
+      <div><dt>Education</dt><dd>Ph.D., International History, and five-year diploma in History, Tomsk State University, Russia.</dd></div>
+      <div><dt>Languages</dt><dd>Russian (native), English (professional), French; Spanish (beginner).</dd></div>
+      <div><dt>Based in</dt><dd>California, Pacific Time. Available for remote and hybrid work.</dd></div>
+    </dl>
+    <p class="backrow"><a href="#" class="back" data-back>← Back</a><a href="#top" class="top">↑ Top</a></p>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="block" id="contact">
+  <h2>Contact</h2>
+  <div class="content">
+    <div class="links">
+      <p><a href="https://www.linkedin.com/in/allakassianova/">LinkedIn: linkedin.com/in/allakassianova</a></p>
+      <p>Email on request through LinkedIn.</p>
+    </div>
+    <p class="backrow"><a href="#" class="back" data-back>← Back</a><a href="#top" class="top">↑ Top</a></p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>Alla Kassianova. Updated November 2026.</footer>
+</div>
+
+<script>
+(function () {
+  // ===== PUBLICATIONS DATA: one line per item. To add one, copy a line and change its fields; keep the quotes and the final comma. =====
+  const WORK = [
+    { type: "chapter", topic: "nuclear", year: 2016, title: "The Human Dimension: The Interpersonal Nature of Lab-to-Lab Cooperation", venue: "With Siegfried S. Hecker. Opening essay, Doomed to Cooperate, vol. 2. Bathtub Row Press.", link: "https://nonproliferation.org/lab-to-lab-contents/", linkText: "Contents" },
+    { type: "chapter", topic: "nuclear", year: 2016, title: "Nuclear Security Cooperation between the Russian Military and the US Department of Energy and Its National Laboratories", venue: "With Siegfried S. Hecker and Niko I. Milonopoulos. In Doomed to Cooperate, vol. 1, Section III, Nuclear Materials. Bathtub Row Press.", link: "https://nonproliferation.org/lab-to-lab-contents/", linkText: "Contents" },
+    { type: "chapter", topic: "nuclear", year: 2016, title: "A Conversation with Academician Nikolai N. Ponomarev-Stepnoy on Russian Navy Materials Protection, Control, and Accounting", venue: "With Siegfried S. Hecker. In Doomed to Cooperate, vol. 1, Section III. Bathtub Row Press.", link: "https://nonproliferation.org/lab-to-lab-contents/", linkText: "Contents" },
+    { type: "chapter", topic: "nuclear", year: 2016, title: "An Interview with Academician N. N. Ponomarev-Stepnoy: Reflecting on Russian-US Cooperation in the Field of Nuclear Materials Security and Safeguards", venue: "With Siegfried S. Hecker. In Doomed to Cooperate, vol. 1, Section III. Bathtub Row Press.", link: "https://nonproliferation.org/lab-to-lab-contents/", linkText: "Contents" },
+    { type: "chapter", topic: "nuclear", year: 2016, title: "A Conversation with Academician Nikolai Nikolaevich Ponomarev-Stepnoy", venue: "With Siegfried S. Hecker. In Doomed to Cooperate, vol. 1. Bathtub Row Press.", link: "https://nonproliferation.org/lab-to-lab-contents/", linkText: "Contents" },
+    { type: "memo", topic: "nuclear", year: 2016, title: "US-Russia Nuclear Lab-to-Lab Cooperation: Looking Back on a Quarter Century of Constructive Relations", venue: "PONARS Eurasia Policy Memo 425." },
+    { type: "memo", topic: "nuclear", year: 2020, title: "U.S.–Russia Science Cooperation Today", venue: "Russian Analytical Digest." },
+    { type: "memo", topic: "nuclear", year: 2020, title: "Three Major Nuclear Accidents, as Seen by Young American and Russian Professionals", venue: "With Siegfried S. Hecker. Bulletin of the Atomic Scientists, August 31, 2020. Introduction to a series of papers by young nuclear professionals.", link: "https://thebulletin.org/2020/08/three-major-nuclear-accidents-as-seen-by-young-american-and-russian-professionals/", linkText: "Read" },
+    { type: "memo", topic: "nuclear", year: 2019, title: "The Future of Global Nuclear Power through the Eyes of Young Russian and American Professionals", venue: "With Siegfried S. Hecker. Bulletin of the Atomic Scientists, June 20, 2019. Introduction to a series of papers by young nuclear professionals.", link: "https://thebulletin.org/2019/06/the-future-of-global-nuclear-power-through-the-eyes-of-young-russian-and-american-professionals/", linkText: "Read" },
+    { type: "article", topic: "policy", year: 2005, title: "Russia: In Search of Strategy, in Search of Self", venue: "Contemporary Security Policy 26 (3), 663–685." },
+    { type: "article", topic: "policy", year: 2001, title: "Russia: Still Open to the West? Evolution of the State Identity in the Foreign Policy and Security Discourse", venue: "Europe-Asia Studies 53 (6), 821–839. Cited more than 160 times." },
+    { type: "article", topic: "policy", year: 2001, title: "Ist Russland noch westorientiert? Die Entwicklung der Staatsidentität in den Diskursen über die Aussen- und Sicherheitspolitik", venue: "Osteuropa 51 (10), 1200–1218. In German." },
+    { type: "article", topic: "missile", year: 2003, title: "Russian-European Cooperation on TMD: Russian Hopes and European Transatlantic Experience", venue: "The Nonproliferation Review 10 (3), 71–83." },
+    { type: "chapter", topic: "missile", year: 2005, title: "Roads Not (Yet) Taken: Russian Approaches to Cooperation in Missile Defence", venue: "In Missile Defence: International, Regional and National Implications, 84–110." },
+    { type: "chapter", topic: "missile", year: 2004, title: "Russia and International Cooperation on Missile Defense: Prospects vs. Expectations", venue: "In Spazio politico della regione: cittadinanza, azione di governo e politiche." },
+    { type: "memo", topic: "missile", year: 2003, title: "Missile Defense Cooperation in the US–European–Russian Triangle", venue: "PONARS Policy Memo 313, Center for Strategic and International Studies." },
+    { type: "chapter", topic: "industry", year: 2008, title: "The Russian Defense Industry in the Age of Globalization", venue: "In Russia and Globalization: Identity, Security, and Society in an Era of Change." },
+    { type: "memo", topic: "industry", year: 2006, title: "Russian Weapons Sales to Iran: Why They Are Unlikely to Stop", venue: "PONARS Policy Memo 427." },
+    { type: "memo", topic: "industry", year: 2006, title: "Enter Rosoboronexport", venue: "PONARS Policy Memo, Center for Strategic and International Studies." },
+    { type: "memo", topic: "policy", year: 2002, title: "Russian Diplomacy in the 21st Century: Multilateralism Put to Work", venue: "PONARS Policy Memo." },
+    { type: "review", topic: "nuclear", year: 2016, title: "Norman Polmar and Michael White, Project Azorian: The CIA and the Raising of K-129", venue: "Journal of Cold War Studies 18 (3), 236–238." },
+    { type: "review", topic: "policy", year: 2002, title: "Paul Robert Magocsi, Of the Making of Nationalities There Is No End, Vol. I: Carpatho-Rusyns in Europe and North America", venue: "Europe-Asia Studies 54 (6), 1000–1003." },
+  ];
+  const TYPE_LABEL = { article: "Research article", chapter: "Book chapter", memo: "Policy analysis", review: "Review", translation: "Translation and editing", project: "Project" };
+  const TOPIC_LABEL = { policy: "Foreign and security policy", industry: "Arms exports and defense industry", missile: "Missile defense", nuclear: "Nuclear and science cooperation", programs: "Education and exchange programs" };
+  const TYPE_ORDER = ["article", "chapter", "memo", "review"];
+
+  const list = document.getElementById("worklist");
+  const count = document.getElementById("count");
+  const empty = document.getElementById("empty");
+  const state = { type: "all", topic: "all" };
+
+  WORK.sort((a, b) => TYPE_ORDER.indexOf(a.type) - TYPE_ORDER.indexOf(b.type) || (b.year || 0) - (a.year || 0));
+  WORK.forEach(w => {
+    const li = document.createElement("li");
+    li.className = "work";
+    li.dataset.type = w.type;
+    li.dataset.topic = w.topic;
+    li.innerHTML =
+      '<div class="year">' + (w.year || "n.d.") + '</div>' +
+      '<div><div class="title"></div><div class="venue"></div>' +
+      '<div class="tags"><span class="tag">' + TYPE_LABEL[w.type] + '</span><span class="tag">' + TOPIC_LABEL[w.topic] + '</span></div></div>';
+    li.querySelector(".title").textContent = w.title;
+    li.querySelector(".venue").textContent = w.venue;
+    if (w.link) {
+      const a = document.createElement("a");
+      a.href = w.link; a.textContent = w.linkText || "Link";
+      li.querySelector(".venue").append(" ", a);
+    }
+    list.appendChild(li);
+  });
+
+  function apply() {
+    let shown = 0;
+    list.querySelectorAll(".work").forEach(li => {
+      const ok = (state.type === "all" || li.dataset.type === state.type) && (state.topic === "all" || li.dataset.topic === state.topic);
+      li.hidden = !ok;
+      if (ok) shown++;
+    });
+    count.textContent = shown + " of " + WORK.length + " publications";
+    empty.hidden = shown !== 0;
+  }
+
+  document.querySelectorAll(".filter-row").forEach(row => {
+    const group = row.dataset.group;
+    row.querySelectorAll(".chip").forEach(btn => {
+      btn.addEventListener("click", () => {
+        state[group] = btn.dataset.value;
+        row.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+        apply();
+      });
+    });
+  });
+  apply();
+
+  // "Back" returns to where the reader was before following an in-page link; falls back to the top.
+  let jumps = 0;
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a[href^=\"#\"]");
+    if (!a) return;
+    if (a.hasAttribute("data-back")) {
+      e.preventDefault();
+      if (jumps > 0) { jumps--; history.back(); }
+      else { const t = document.getElementById("top"); if (t) t.scrollIntoView(); }
+      return;
+    }
+    if (a.getAttribute("href").length > 1) jumps++;
+  });
+})();
+</script>
+</body>
+</html>
