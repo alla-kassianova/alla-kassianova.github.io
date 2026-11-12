@@ -73,8 +73,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   gap: 18px;
 }
 .masthead h1 { font-size: clamp(34px, 5vw, 48px); letter-spacing: -0.01em; }
-.masthead .lede { font-family: var(--display); font-size: clamp(20px, 2.6vw, 26px); font-weight: 400; color: var(--ink); max-width: 44ch; }
-.masthead .langs { color: var(--muted); font-size: 15px; }
+.masthead .lede { font-family: var(--display); font-size: clamp(20px, 2.6vw, 26px); font-weight: 400; color: var(--ink); max-width: none; }
+.masthead .langs { color: var(--muted); font-size: 15px; max-width: none; }
+@media (max-width: 720px) { .masthead .lede br { display: none; } }
 nav.toc { font-size: 15px; margin-top: 6px; }
 nav.toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
 nav.toc a:hover { border-bottom-color: var(--accent); color: var(--accent); }
@@ -230,7 +231,7 @@ footer { padding-top: 28px; color: var(--muted); font-size: 14px; }
 <!-- ===== HEADER: name, headline, subtitle, menu ===== -->
 <header class="masthead" id="top">
   <h1>Alla Kassianova</h1>
-  <p class="lede">I research a question down to its primary sources, organize what I find so the reader can act on it, and see projects through</p>
+  <p class="lede">I make sense of many sources, voices and contexts,<br>and write it up so the reader can act on it</p>
   <p class="langs">Research and analysis · Translation and editing, Russian and English · Project administration<br>Available for remote or hybrid work from California</p>
   <nav class="toc" aria-label="Sections">
     <ul class="toc-list">
@@ -256,8 +257,8 @@ footer { padding-top: 28px; color: var(--muted); font-size: 14px; }
 <section class="block" id="about">
   <h2>About</h2>
   <div class="content">
-    <p class="lead">I am a researcher, translator and program administrator working in Russian and English. For eleven years I was a Senior Project Associate at Stanford University's Center for International Security and Cooperation (CISAC), where I ran U.S.–Russian research and exchange projects and coordinated a two-volume history of nuclear cooperation between the two countries from first drafts to publication.</p>
-    <p>Before that I was a university lecturer and published researcher on Russian security and defense policy, a media analyst for corporate clients, and a program director for business delegations visiting Silicon Valley. In each role I have relied on the same set of skills: build the research from primary sources, present the trends and conclusions in a form that informs decisions and action, and see every project through with attention to detail and an eye on what comes next.</p>
+    <p class="lead">I research, write, translate and manage projects, in Russian and English. My background is in international history and security policy, and my work has taken me from university teaching and published research to running international research and exchange programs, editing and translating across the two languages, and working alongside senior scientists, policy experts and institutional partners on both sides.</p>
+    <p>Most recently, much of that work was based at Stanford University's Center for International Security and Cooperation. I have worked as a lecturer, researcher, translator, editor and program manager, and in each role I relied on the same set of skills: build the research from primary sources, present the trends and conclusions in a form that informs decisions and action, and see every project through with attention to detail and an eye on what comes next.</p>
     <p>I am looking for research, analysis and proposal-support roles; translation and editing work; and program or project administration.</p>
     <p class="backrow"><a href="#" class="back" data-back>← Back</a><a href="#top" class="top">↑ Top</a></p>
   </div>
